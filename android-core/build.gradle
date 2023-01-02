@@ -1,0 +1,19 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+configureFeatureModule(project)
+
+dependencies {
+    api java_x.inject
+    api support.appcompat
+    api lifecycle.viewmodel
+    api navigation.fragment
+
+    implementation google.dagger_android_support
+
+    testApi testing.junit
+    androidTestApi testing.android_junit
+    androidTestApi testing.android_espresso
+}

@@ -1,0 +1,4 @@
+<resources>
+    <style name="Theme.MassiveApp" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    </style>
+</resources>

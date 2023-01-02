@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/text_presentation_graph_id"
+    app:startDestination="@id/text_presentation_id">
+
+    <fragment
+        android:id="@+id/text_presentation_id"
+        android:name="com.example.text_presentation_feature.TextPresentationFragment"
+        tools:layout="@layout/text_presentation_fragment" />
+
+</navigation>

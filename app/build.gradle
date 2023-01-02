@@ -1,0 +1,49 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk projectCompileSdk
+
+    defaultConfig {
+        applicationId "com.example.massiveapp"
+        minSdk projectMinSdk
+        targetSdk projectTargetSdk
+
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation project(":text-impl")
+    implementation project(":color-impl")
+
+    implementation project(":color-setup-feature")
+    implementation project(":text-presentation-feature")
+
+    implementation project(":android-core")
+
+    implementation google.dagger
+    implementation google.dagger_android_support
+    kapt google.dagger_compiler
+    kapt google.dagger_processor
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/edit_graph_id"
+    app:startDestination="@id/color_setup_id">
+
+    <fragment
+        android:id="@+id/color_setup_id"
+        android:name="com.example.color_setup_feature.ColorSetupFragment"
+        tools:layout="@layout/color_setup_fragment">
+
+        <deepLink app:uri="@string/deeplink_color_setup" />
+    </fragment>
+</navigation>

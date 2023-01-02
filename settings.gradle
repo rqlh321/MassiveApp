@@ -1,0 +1,23 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "MassiveApp"
+include ':app'
+include ':text-presentation-feature'
+include ':android-core'
+include ':text-api'
+include ':text-impl'
+include ':color-api'
+include ':color-impl'
+include ':color-setup-feature'
