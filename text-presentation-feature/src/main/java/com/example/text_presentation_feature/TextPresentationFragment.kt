@@ -7,6 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.android_core.*
 import com.example.text_presentation_feature.databinding.TextPresentationFragmentBinding
+import kotlinx.coroutines.launch
 
 class TextPresentationFragment : CommonFragment(R.layout.text_presentation_fragment) {
 
@@ -15,11 +16,7 @@ class TextPresentationFragment : CommonFragment(R.layout.text_presentation_fragm
 
         val viewModel = viewModel<TextPresentationViewModel>()
         val screenHolder = TextPresentationFragmentBinding.bind(view)
-
-        val renderer = TextPresentationRenderer(
-            screenHolder = screenHolder,
-            lifecycleScope = viewLifecycleOwner.lifecycleScope
-        )
+        val renderer = TextPresentationRenderer(screenHolder)
 
         screenHolder.button.click {
             findNavController().navigate(deeplinkColorSetup)
@@ -30,7 +27,10 @@ class TextPresentationFragment : CommonFragment(R.layout.text_presentation_fragm
                 viewModel.update()
             }
         }
-        viewModel.viewState.observe(viewLifecycleOwner, renderer::invoke)
+
+        lifecycleScope.launch {
+            viewModel.viewState.collect(renderer::invoke)
+        }
     }
 
 }

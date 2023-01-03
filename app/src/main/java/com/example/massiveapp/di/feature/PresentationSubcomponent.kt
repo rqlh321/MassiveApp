@@ -1,7 +1,5 @@
 package com.example.massiveapp.di.feature
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.massiveapp.di.ViewModelKey
 import com.example.text_presentation_feature.TextPresentationFragment
@@ -16,6 +14,8 @@ import dagger.Subcomponent
 import dagger.android.AndroidInjector
 import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Singleton
 
 
@@ -29,7 +29,7 @@ interface PresentationSubcomponent : AndroidInjector<TextPresentationFragment> {
 interface PresentationModule {
 
     @Binds
-    fun bindLiveData(impl: MutableLiveData<TextPresentationViewState>): LiveData<TextPresentationViewState>
+    fun bindViewState(impl: MutableStateFlow<TextPresentationViewState>): StateFlow<TextPresentationViewState>
 
     @Binds
     fun bindSetPreviewTextAction(impl: SetPreviewTextActionImpl): SetPreviewTextAction
@@ -47,8 +47,8 @@ interface PresentationModule {
     companion object {
         @Provides
         @Singleton
-        fun provideTextPresentationViewState(): MutableLiveData<TextPresentationViewState> {
-            return MutableLiveData<TextPresentationViewState>()
+        fun provideTextPresentationViewState(): MutableStateFlow<TextPresentationViewState> {
+            return MutableStateFlow(TextPresentationViewState("", "#ffffff"))
         }
 
     }

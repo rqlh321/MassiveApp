@@ -1,25 +1,36 @@
 package com.example.text_presentation_feature
 
+import android.graphics.Color
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import androidx.core.text.PrecomputedTextCompat
 import androidx.core.widget.TextViewCompat
-import androidx.lifecycle.LifecycleCoroutineScope
 import com.example.text_presentation_feature.databinding.TextPresentationFragmentBinding
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class TextPresentationRenderer(
     private val screenHolder: TextPresentationFragmentBinding,
-    private val lifecycleScope: LifecycleCoroutineScope,
-) : (TextPresentationViewState) -> Unit {
+) : suspend (TextPresentationViewState) -> Unit {
 
-    override fun invoke(viewState: TextPresentationViewState) {
-        lifecycleScope.launch {
-            val precomputedText = withContext(Dispatchers.Default) {
-                val params = TextViewCompat.getTextMetricsParams(screenHolder.text)
-                PrecomputedTextCompat.create(viewState.text, params)
+    override suspend fun invoke(viewState: TextPresentationViewState) {
+        val precomputedText = withContext(Dispatchers.Default) {
+            val params = TextViewCompat.getTextMetricsParams(screenHolder.text)
+            val spannableString = SpannableString(viewState.text).apply {
+                setSpan(
+                    ForegroundColorSpan(Color.parseColor(viewState.color)),
+                    0,
+                    viewState.text.length,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
             }
-            TextViewCompat.setPrecomputedText(screenHolder.text, precomputedText)
+            PrecomputedTextCompat.create(spannableString, params)
         }
+
+        TextViewCompat.setPrecomputedText(
+            screenHolder.text,
+            precomputedText
+        )
     }
 }

@@ -1,12 +1,12 @@
 package com.example.text_presentation_feature
 
-import androidx.lifecycle.LiveData
 import com.example.android_core.CommonViewModel
 import com.example.text_presentation_feature.action.SetPreviewTextAction
+import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 class TextPresentationViewModel @Inject constructor(
-    val viewState: LiveData<TextPresentationViewState>,
+    val viewState: StateFlow<TextPresentationViewState>,
     private val setPreviewTextAction: SetPreviewTextAction,
 ) : CommonViewModel() {
 
