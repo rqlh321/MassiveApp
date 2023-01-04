@@ -10,4 +10,7 @@ dependencies {
     implementation project(':color-api')
 
     implementation project(":android-core")
+
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
 }
