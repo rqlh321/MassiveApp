@@ -12,6 +12,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/android-core" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/banner-api" />
+            <option value="$PROJECT_DIR$/banner-impl" />
             <option value="$PROJECT_DIR$/color-api" />
             <option value="$PROJECT_DIR$/color-impl" />
             <option value="$PROJECT_DIR$/color-setup-feature" />

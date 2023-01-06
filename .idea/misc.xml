@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Development/project/learning/android/MassiveApp/text-presentation-feature/src/main/res/drawable/shape.xml" value="0.2195" />
+        <entry key="..\:/Development/project/learning/android/MassiveApp/text-presentation-feature/src/main/res/layout/banner_item_medium.xml" value="0.5134383688600556" />
+        <entry key="..\:/Development/project/learning/android/MassiveApp/text-presentation-feature/src/main/res/layout/banner_list_item.xml" value="0.2677083333333333" />
         <entry key="..\:/Development/project/learning/android/MassiveApp/text-presentation-feature/src/main/res/layout/big_banner_item.xml" value="0.2677083333333333" />
         <entry key="..\:/Development/project/learning/android/MassiveApp/text-presentation-feature/src/main/res/layout/item.xml" value="0.20078125" />
+        <entry key="..\:/Development/project/learning/android/MassiveApp/text-presentation-feature/src/main/res/layout/medium_banner_item.xml" value="0.26875" />
+        <entry key="..\:/Development/project/learning/android/MassiveApp/text-presentation-feature/src/main/res/layout/small_banner_item.xml" value="0.5134383688600556" />
       </map>
     </option>
   </component>

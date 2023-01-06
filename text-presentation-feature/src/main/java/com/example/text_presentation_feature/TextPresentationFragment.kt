@@ -6,8 +6,8 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.android_core.*
-import com.example.text_presentation_feature.adapter.BannerListAdapter
-import com.example.text_presentation_feature.adapter.PaddingDecoration
+import com.example.text_presentation_feature.adapter.BannerAdapter
+import com.example.text_presentation_feature.adapter.decoration.PaddingDecoration
 import com.example.text_presentation_feature.databinding.TextPresentationFragmentBinding
 import kotlinx.coroutines.launch
 
@@ -20,9 +20,8 @@ class TextPresentationFragment : CommonFragment(R.layout.text_presentation_fragm
         val screenHolder = TextPresentationFragmentBinding.bind(view)
         val renderer = TextPresentationRenderer(screenHolder)
 
-
         screenHolder.list.addItemDecoration(PaddingDecoration(view.context))
-        screenHolder.list.adapter = BannerListAdapter()
+        screenHolder.list.adapter = BannerAdapter()
         screenHolder.button.click { findNavController().navigate(deeplinkColorSetup) }
 
         setFragmentResultListener(UPDATE_REQUEST_KEY) { _, bundle ->

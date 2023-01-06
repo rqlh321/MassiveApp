@@ -1,10 +1,11 @@
-package com.example.text_presentation_feature.adapter
+package com.example.text_presentation_feature.adapter.decoration
 
 import android.content.Context
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.text_presentation_feature.R
+import com.example.text_presentation_feature.adapter.viewholder.GroupListBannerViewHolder
 
 class PaddingDecoration(context: Context) : RecyclerView.ItemDecoration() {
 
@@ -19,7 +20,7 @@ class PaddingDecoration(context: Context) : RecyclerView.ItemDecoration() {
     ) {
         super.getItemOffsets(outRect, view, parent, state)
 
-        if (parent.getChildViewHolder(view) !is ListBannerViewHolder) {
+        if (parent.getChildViewHolder(view) !is GroupListBannerViewHolder) {
             outRect.left = outerPadding
             outRect.right = outerPadding
         }

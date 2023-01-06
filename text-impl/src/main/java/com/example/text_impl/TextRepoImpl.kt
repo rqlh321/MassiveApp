@@ -5,4 +5,5 @@ import javax.inject.Inject
 
 class TextRepoImpl @Inject constructor() : TextRepo {
     override suspend fun main() = "Text: ${hashCode()}"
+    override suspend fun text(id: String) = "Text $id"
 }

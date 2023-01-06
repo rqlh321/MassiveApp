@@ -36,6 +36,7 @@ android {
 dependencies {
     implementation project(":text-impl")
     implementation project(":color-impl")
+    implementation project(":banner-impl")
 
     implementation project(":color-setup-feature")
     implementation project(":text-presentation-feature")

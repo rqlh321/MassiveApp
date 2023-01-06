@@ -48,7 +48,7 @@ interface PresentationModule {
         @Provides
         @Singleton
         fun provideTextPresentationViewState(): MutableStateFlow<TextPresentationViewState> {
-            return MutableStateFlow(TextPresentationViewState("", "#ffffff"))
+            return MutableStateFlow(TextPresentationViewState("", "#ffffff", emptyList()))
         }
 
     }

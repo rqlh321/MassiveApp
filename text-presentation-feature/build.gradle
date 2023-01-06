@@ -8,6 +8,7 @@ configureFeatureModule(project)
 dependencies {
     implementation project(':text-api')
     implementation project(':color-api')
+    implementation project(':banner-api')
 
     implementation project(":android-core")
 

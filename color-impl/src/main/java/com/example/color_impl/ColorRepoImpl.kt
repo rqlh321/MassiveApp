@@ -8,9 +8,9 @@ class ColorRepoImpl @Inject constructor() : ColorRepo {
 
     private var color = "#89CFF0"
 
-    override suspend fun main() = color
+    override suspend fun color(id: String) = color
 
-    override suspend fun change() = generate().also {
+    override suspend fun change(id: String) = generate().also {
         color = it
     }
 

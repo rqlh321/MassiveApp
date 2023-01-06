@@ -6,7 +6,7 @@ import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import androidx.core.text.PrecomputedTextCompat
 import androidx.core.widget.TextViewCompat
-import com.example.text_presentation_feature.adapter.BannerListAdapter
+import com.example.text_presentation_feature.adapter.BannerAdapter
 import com.example.text_presentation_feature.databinding.TextPresentationFragmentBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -16,22 +16,7 @@ class TextPresentationRenderer(
 ) : suspend (TextPresentationViewState) -> Unit {
 
     override suspend fun invoke(viewState: TextPresentationViewState) {
-        val list = (0..100).map {
-            TextPresentationItem(
-                it.toString(),
-                text = it.toString(),
-                color = "#000000",
-                list = if (it % 2 == 0) emptyList() else (0..100).map {
-                    TextPresentationItem(
-                        it.toString(),
-                        text = it.toString(),
-                        color = "#000000",
-                        list = emptyList()
-                    )
-                }
-            )
-        }
-        (screenHolder.list.adapter as BannerListAdapter).submitList(list)
+        (screenHolder.list.adapter as BannerAdapter).submitList(viewState.groups)
         val precomputedText = withContext(Dispatchers.Default) {
             val params = TextViewCompat.getTextMetricsParams(screenHolder.text)
             val spannableString = SpannableString(viewState.text).apply {
