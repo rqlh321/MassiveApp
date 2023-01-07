@@ -10,6 +10,10 @@
         android:name="com.example.color_setup_feature.ColorSetupFragment"
         tools:layout="@layout/color_setup_fragment">
 
-        <deepLink app:uri="@string/deeplink_color_setup" />
+        <deepLink app:uri="@string/deeplink_schema_color_setup" />
+
+        <argument
+            android:name="id"
+            app:argType="string" />
     </fragment>
 </navigation>

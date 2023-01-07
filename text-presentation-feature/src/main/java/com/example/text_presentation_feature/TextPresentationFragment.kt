@@ -22,7 +22,7 @@ class TextPresentationFragment : CommonFragment(R.layout.text_presentation_fragm
 
         screenHolder.list.addItemDecoration(PaddingDecoration(view.context))
         screenHolder.list.adapter = BannerAdapter()
-        screenHolder.button.click { findNavController().navigate(deeplinkColorSetup) }
+        screenHolder.button.click { findNavController().navigate(deeplinkColorSetup("123")) }
 
         setFragmentResultListener(UPDATE_REQUEST_KEY) { _, bundle ->
             if (bundle.getString(UPDATE_REQUEST_RESULT_KEY) == SUCCESS_UPDATE_RESULT) {
