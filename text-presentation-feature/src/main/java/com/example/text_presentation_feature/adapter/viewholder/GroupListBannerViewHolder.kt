@@ -6,11 +6,14 @@ import com.example.text_presentation_feature.adapter.decoration.InnerListPadding
 import com.example.text_presentation_feature.databinding.BannerGroupListHorizontalItemBinding
 
 class GroupListBannerViewHolder(
-    binding: BannerGroupListHorizontalItemBinding
+    binding: BannerGroupListHorizontalItemBinding,
+    onBannerClick: (String) -> Unit
 ) : BannerViewHolder(binding.root) {
-    private val adapter = BannerGroupListHorizontalAdapter()
+
+    private val adapter = BannerGroupListHorizontalAdapter(onBannerClick)
 
     init {
+        binding.list.setHasFixedSize(true)
         binding.list.adapter = adapter
         binding.list.addItemDecoration(InnerListPaddingDecoration(itemView.context))
     }

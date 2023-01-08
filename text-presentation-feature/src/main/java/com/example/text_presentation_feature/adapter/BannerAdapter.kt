@@ -3,6 +3,7 @@ package com.example.text_presentation_feature.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
+import com.example.android_core.click
 import com.example.banner_api.Banner.Companion.PRESENTATION_GRID
 import com.example.banner_api.Banner.Companion.PRESENTATION_LIST
 import com.example.banner_api.Banner.Companion.PRESENTATION_SINGLE
@@ -15,7 +16,15 @@ import com.example.text_presentation_feature.databinding.BannerGroupGridItemBind
 import com.example.text_presentation_feature.databinding.BannerGroupListHorizontalItemBinding
 import com.example.text_presentation_feature.databinding.BannerItemBigBinding
 
-class BannerAdapter : ListAdapter<GroupItem, BannerViewHolder>(DiffCallback()) {
+class BannerAdapter(
+    private val onBannerClick: (String) -> Unit
+) : ListAdapter<GroupItem, BannerViewHolder>(DiffCallback()) {
+
+    init {
+        setHasStableIds(true)
+    }
+
+    override fun getItemId(position: Int) = getItem(position).id.hashCode().toLong()
 
     override fun getItemViewType(position: Int) = getItem(position).presentation
 
@@ -25,21 +34,23 @@ class BannerAdapter : ListAdapter<GroupItem, BannerViewHolder>(DiffCallback()) {
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
-        )
+            ),
+        ).apply { itemView.click { onBannerClick.invoke(getItem(absoluteAdapterPosition).id) } }
         PRESENTATION_LIST -> GroupListBannerViewHolder(
             BannerGroupListHorizontalItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ),
+            onBannerClick
         )
         PRESENTATION_GRID -> GroupGridBannerViewHolder(
             BannerGroupGridItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ),
+            onBannerClick
         )
         else -> throw IllegalArgumentException()
     }

@@ -7,15 +7,17 @@ import com.example.text_presentation_feature.adapter.decoration.InnerGridPadding
 import com.example.text_presentation_feature.databinding.BannerGroupGridItemBinding
 
 class GroupGridBannerViewHolder(
-    binding: BannerGroupGridItemBinding
+    binding: BannerGroupGridItemBinding,
+    onBannerClick: (String) -> Unit
 ) : BannerViewHolder(binding.root) {
 
-    private val adapter = BannerGroupGridAdapter()
+    private val adapter = BannerGroupGridAdapter(onBannerClick)
 
     init {
         (binding.list.layoutManager as GridLayoutManager).apply {
             this.spanCount = 2
         }
+        binding.list.setHasFixedSize(true)
         binding.list.adapter = adapter
         binding.list.addItemDecoration(InnerGridPaddingDecoration(itemView.context))
     }

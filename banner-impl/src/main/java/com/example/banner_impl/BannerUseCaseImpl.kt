@@ -6,7 +6,6 @@ import com.example.banner_api.GroupedBanner
 import com.example.color_api.ColorRepo
 import com.example.text_presentation_api.TextRepo
 import javax.inject.Inject
-import kotlin.random.Random
 
 class BannerUseCaseImpl @Inject constructor(
     private val textRepo: TextRepo,
@@ -15,19 +14,19 @@ class BannerUseCaseImpl @Inject constructor(
 
     override suspend fun banners() = generate()
 
-    private suspend fun generate(): List<Banner> = (0..9).map {
+    private suspend fun generate(): List<Banner> = (0..2).map {
         val id = it.toString()
         Banner(
             id = id,
             text = textRepo.text(id),
             color = colorRepo.color(id),
-            presentation = Random.nextInt(0, 3),
-            list = generateInternal()
+            presentation = it,
+            list = generateInternal(id)
         )
     }
 
-    private suspend fun generateInternal(): List<GroupedBanner> = (0..9).map {
-        val id = it.toString()
+    private suspend fun generateInternal(parentId: String): List<GroupedBanner> = (0..9).map {
+        val id = "$parentId$it"
         GroupedBanner(
             id = id,
             text = textRepo.text(id),

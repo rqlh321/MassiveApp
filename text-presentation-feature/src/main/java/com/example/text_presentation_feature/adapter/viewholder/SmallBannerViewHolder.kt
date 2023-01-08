@@ -10,7 +10,12 @@ class SmallBannerViewHolder(
 ) : GroupedBannerViewHolder(binding.root) {
 
     override fun bind(item: GroupedBannerItem) {
-        binding.root.backgroundTintList = ColorStateList.valueOf(Color.parseColor(item.color))
+        try {
+            binding.root.backgroundTintList = ColorStateList.valueOf(Color.parseColor(item.color))
+        }catch (e:Exception){
+            println(item.color)
+            e.printStackTrace()
+        }
         binding.title.text = item.text
     }
 }

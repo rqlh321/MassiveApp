@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.SimpleItemAnimator
 import com.example.android_core.*
 import com.example.text_presentation_feature.adapter.BannerAdapter
 import com.example.text_presentation_feature.adapter.decoration.PaddingDecoration
@@ -21,11 +22,15 @@ class TextPresentationFragment : CommonFragment(R.layout.text_presentation_fragm
         val renderer = TextPresentationRenderer(screenHolder)
 
         screenHolder.list.addItemDecoration(PaddingDecoration(view.context))
-        screenHolder.list.adapter = BannerAdapter()
-        screenHolder.button.click { findNavController().navigate(deeplinkColorSetup("123")) }
+        screenHolder.list.setHasFixedSize(true)
+        screenHolder.list.adapter = BannerAdapter {
+            findNavController().navigate(deeplinkColorSetup(it))
+        }
+        (screenHolder.list.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
 
         setFragmentResultListener(UPDATE_REQUEST_KEY) { _, bundle ->
-            if (bundle.getString(UPDATE_REQUEST_RESULT_KEY) == SUCCESS_UPDATE_RESULT) {
+            val result = bundle.getString(UPDATE_REQUEST_RESULT_KEY)
+            if (result == SUCCESS_UPDATE_RESULT) {
                 viewModel.update()
             }
         }

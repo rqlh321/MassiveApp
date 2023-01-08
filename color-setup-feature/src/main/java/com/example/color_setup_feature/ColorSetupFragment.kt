@@ -2,7 +2,6 @@ package com.example.color_setup_feature
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.lifecycleScope
@@ -20,10 +19,8 @@ class ColorSetupFragment : CommonFragment(R.layout.color_setup_fragment) {
         val viewModel = viewModel<ColorSetupViewModel>()
         val screenHolder = ColorSetupFragmentBinding.bind(view)
 
-        Toast.makeText(requireContext(),args.id,Toast.LENGTH_SHORT).show()
-
         screenHolder.changeColorButton.click {
-            viewModel.changeColor()
+            viewModel.changeColor(args.id)
             setFragmentResult(
                 UPDATE_REQUEST_KEY,
                 bundleOf(UPDATE_REQUEST_RESULT_KEY to SUCCESS_UPDATE_RESULT)

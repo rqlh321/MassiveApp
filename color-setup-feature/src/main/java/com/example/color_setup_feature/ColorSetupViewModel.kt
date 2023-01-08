@@ -21,8 +21,8 @@ class ColorSetupViewModel @Inject constructor(
         }
     }
 
-    fun changeColor() = launch {
-        val newColor = colorRepo.change("")
+    fun changeColor(id: String) = launch {
+        val newColor = colorRepo.change(id)
         _uiState.emit(ColorSetupViewState(color = Color.parseColor(newColor)))
     }
 

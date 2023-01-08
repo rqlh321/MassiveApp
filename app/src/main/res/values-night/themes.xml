@@ -1,4 +1,6 @@
 <resources>
+
     <style name="Theme.MassiveApp" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="textColorPrimary">@color/white</item>
     </style>
 </resources>

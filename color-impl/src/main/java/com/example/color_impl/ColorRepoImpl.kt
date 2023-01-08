@@ -6,12 +6,15 @@ import kotlin.random.Random
 
 class ColorRepoImpl @Inject constructor() : ColorRepo {
 
-    private var color = "#89CFF0"
+    private val defaultColor = "#89CFF0"
 
-    override suspend fun color(id: String) = color
+    private val colors = hashMapOf<String, String>()
+
+    override suspend fun color(id: String) = colors[id] ?: defaultColor
 
     override suspend fun change(id: String) = generate().also {
-        color = it
+        colors[id] = it
+        return it
     }
 
     private fun generate(): String {
