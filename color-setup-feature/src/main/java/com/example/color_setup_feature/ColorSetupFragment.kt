@@ -1,5 +1,7 @@
 package com.example.color_setup_feature
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
@@ -29,7 +31,7 @@ class ColorSetupFragment : CommonFragment(R.layout.color_setup_fragment) {
 
         lifecycleScope.launch {
             viewModel.uiState.collect { uiState ->
-                screenHolder.currentColor.setBackgroundColor(uiState.color)
+                screenHolder.currentColor.backgroundTintList = ColorStateList.valueOf(uiState.color)
             }
         }
 

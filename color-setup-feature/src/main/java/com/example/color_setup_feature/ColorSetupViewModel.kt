@@ -8,15 +8,15 @@ import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 class ColorSetupViewModel @Inject constructor(
-    private val colorRepo: ColorRepo
+    val uiState: StateFlow<ColorSetupViewState>,
+//    private val id: String,
+    private val _uiState: MutableStateFlow<ColorSetupViewState>,
+    private val colorRepo: ColorRepo,
 ) : CommonViewModel() {
-
-    private val _uiState = MutableStateFlow(ColorSetupViewState(Color.TRANSPARENT))
-    val uiState: StateFlow<ColorSetupViewState> = _uiState
 
     init {
         launch {
-            val color = Color.parseColor(colorRepo.color(""))
+            val color = Color.parseColor(colorRepo.color("args.id"))
             _uiState.emit(ColorSetupViewState(color = color))
         }
     }

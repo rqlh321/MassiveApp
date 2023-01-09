@@ -9,7 +9,6 @@ import javax.inject.Singleton
 @Module
 interface UseCaseModule {
 
-    @Singleton
     @Binds
     fun bannerUseCase(impl: BannerUseCaseImpl): BannerUseCase
 

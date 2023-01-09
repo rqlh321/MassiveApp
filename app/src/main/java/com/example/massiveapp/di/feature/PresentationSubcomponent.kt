@@ -1,6 +1,7 @@
 package com.example.massiveapp.di.feature
 
 import androidx.lifecycle.ViewModel
+import com.example.massiveapp.di.FeatureScope
 import com.example.massiveapp.di.ViewModelKey
 import com.example.text_presentation_feature.TextPresentationFragment
 import com.example.text_presentation_feature.TextPresentationViewModel
@@ -12,20 +13,18 @@ import dagger.Module
 import dagger.Provides
 import dagger.Subcomponent
 import dagger.android.AndroidInjector
-import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import javax.inject.Singleton
 
-
-@Subcomponent
+@FeatureScope
+@Subcomponent(modules = [PresentationModule::class])
 interface PresentationSubcomponent : AndroidInjector<TextPresentationFragment> {
     @Subcomponent.Factory
     interface Factory : AndroidInjector.Factory<TextPresentationFragment>
 }
 
-@Module(subcomponents = [PresentationSubcomponent::class])
+@Module
 interface PresentationModule {
 
     @Binds
@@ -36,17 +35,12 @@ interface PresentationModule {
 
     @Binds
     @IntoMap
-    @ClassKey(TextPresentationFragment::class)
-    fun bind(factory: PresentationSubcomponent.Factory): AndroidInjector.Factory<*>
-
-    @Binds
-    @IntoMap
     @ViewModelKey(TextPresentationViewModel::class)
     fun textPresentationViewModel(viewModel: TextPresentationViewModel): ViewModel
 
     companion object {
+        @FeatureScope
         @Provides
-        @Singleton
         fun provideTextPresentationViewState(): MutableStateFlow<TextPresentationViewState> {
             return MutableStateFlow(TextPresentationViewState("", "#ffffff", emptyList()))
         }

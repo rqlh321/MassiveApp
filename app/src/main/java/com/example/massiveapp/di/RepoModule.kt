@@ -6,16 +6,15 @@ import com.example.text_impl.TextRepoImpl
 import com.example.text_presentation_api.TextRepo
 import dagger.Binds
 import dagger.Module
-import javax.inject.Singleton
 
 @Module
 interface RepoModule {
 
-    @Singleton
+    @AppScope
     @Binds
     fun textRepo(impl: TextRepoImpl): TextRepo
 
-    @Singleton
+    @AppScope
     @Binds
     fun colorRepo(impl: ColorRepoImpl): ColorRepo
 
