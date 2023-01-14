@@ -1,9 +1,8 @@
-package com.example.massiveapp.di.feature
+package com.example.massiveapp.di.module
 
 import androidx.lifecycle.ViewModel
-import com.example.massiveapp.di.FeatureScope
+import com.example.massiveapp.di.scope.FeatureScope
 import com.example.massiveapp.di.ViewModelKey
-import com.example.text_presentation_feature.TextPresentationFragment
 import com.example.text_presentation_feature.TextPresentationViewModel
 import com.example.text_presentation_feature.TextPresentationViewState
 import com.example.text_presentation_feature.action.SetPreviewTextAction
@@ -11,18 +10,9 @@ import com.example.text_presentation_feature.action.impl.SetPreviewTextActionImp
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import dagger.Subcomponent
-import dagger.android.AndroidInjector
 import dagger.multibindings.IntoMap
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-
-@FeatureScope
-@Subcomponent(modules = [PresentationModule::class])
-interface PresentationSubcomponent : AndroidInjector<TextPresentationFragment> {
-    @Subcomponent.Factory
-    interface Factory : AndroidInjector.Factory<TextPresentationFragment>
-}
 
 @Module
 interface PresentationModule {

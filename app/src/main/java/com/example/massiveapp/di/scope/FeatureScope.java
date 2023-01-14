@@ -1,4 +1,4 @@
-package com.example.massiveapp.di;
+package com.example.massiveapp.di.scope;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 

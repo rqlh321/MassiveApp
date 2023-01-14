@@ -3,6 +3,7 @@ package com.example.text_presentation_feature
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.setFragmentResultListener
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.SimpleItemAnimator
@@ -35,7 +36,11 @@ class TextPresentationFragment : CommonFragment(R.layout.text_presentation_fragm
             }
         }
 
-        lifecycleScope.launch { viewModel.viewState.collect(renderer::invoke) }
+        lifecycleScope.launch {
+            viewModel.viewState
+                .flowWithLifecycle(lifecycle)
+                .collect(renderer::invoke)
+        }
     }
 
 }

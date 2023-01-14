@@ -11,7 +11,7 @@ dependencies {
     api lifecycle.viewmodel
     api navigation.fragment
 
-    implementation google.dagger_android_support
+    api google.dagger_android_support
 
     testApi testing.junit
     androidTestApi testing.android_junit
