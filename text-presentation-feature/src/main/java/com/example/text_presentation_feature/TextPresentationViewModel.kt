@@ -11,14 +11,8 @@ class TextPresentationViewModel @Inject constructor(
 ) : CommonViewModel() {
 
     init {
-        launch {
-            setPreviewTextAction.invoke()
-        }
+        launch(setPreviewTextAction)
     }
 
-    fun update() {
-        launch {
-            setPreviewTextAction.invoke()
-        }
-    }
+    fun update() = launch(setPreviewTextAction)
 }

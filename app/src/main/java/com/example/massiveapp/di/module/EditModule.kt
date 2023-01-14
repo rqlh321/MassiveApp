@@ -4,6 +4,10 @@ import android.graphics.Color
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import com.example.color_setup_feature.ColorSetupViewModelFactory
 import com.example.color_setup_feature.ColorSetupViewState
+import com.example.color_setup_feature.action.ChangeColorAction
+import com.example.color_setup_feature.action.SetColorAction
+import com.example.color_setup_feature.action.impl.ChangeColorActionImpl
+import com.example.color_setup_feature.action.impl.SetColorActionImpl
 import com.example.massiveapp.di.ViewModelFactoryKey
 import com.example.massiveapp.di.scope.FeatureScope
 import dagger.Binds
@@ -18,6 +22,12 @@ interface EditModule {
 
     @Binds
     fun bindViewState(impl: MutableStateFlow<ColorSetupViewState>): StateFlow<ColorSetupViewState>
+
+    @Binds
+    fun bindChangeColorAction(impl: ChangeColorActionImpl): ChangeColorAction
+
+    @Binds
+    fun bindSetColorAction(impl: SetColorActionImpl): SetColorAction
 
     @Binds
     @IntoMap
