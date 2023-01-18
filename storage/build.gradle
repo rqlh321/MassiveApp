@@ -8,12 +8,7 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 dependencies {
-    api project(":banner-api")
+    implementation java_x.inject
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
-
-    implementation project(":storage")
-    implementation project(":text-api")
-    implementation project(":color-api")
-    implementation java_x.inject
 }

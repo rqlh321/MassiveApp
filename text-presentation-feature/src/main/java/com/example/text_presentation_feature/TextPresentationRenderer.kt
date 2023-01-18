@@ -17,22 +17,22 @@ class TextPresentationRenderer(
 
     override suspend fun invoke(viewState: TextPresentationViewState) {
         (screenHolder.list.adapter as BannerAdapter).submitList(viewState.groups)
-        val precomputedText = withContext(Dispatchers.Default) {
-            val params = TextViewCompat.getTextMetricsParams(screenHolder.text)
-            val spannableString = SpannableString(viewState.text).apply {
-                setSpan(
-                    ForegroundColorSpan(Color.parseColor(viewState.color)),
-                    0,
-                    viewState.text.length,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-            }
-            PrecomputedTextCompat.create(spannableString, params)
-        }
-
-        TextViewCompat.setPrecomputedText(
-            screenHolder.text,
-            precomputedText
-        )
+//      todo  val precomputedText = withContext(Dispatchers.Default) {
+//            val params = TextViewCompat.getTextMetricsParams(screenHolder.text)
+//            val spannableString = SpannableString(viewState.text).apply {
+//                setSpan(
+//                    ForegroundColorSpan(Color.parseColor(viewState.color)),
+//                    0,
+//                    viewState.text.length,
+//                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+//                )
+//            }
+//            PrecomputedTextCompat.create(spannableString, params)
+//        }
+//
+//    todo    TextViewCompat.setPrecomputedText(
+//            screenHolder.text,
+//            precomputedText
+//        )
     }
 }

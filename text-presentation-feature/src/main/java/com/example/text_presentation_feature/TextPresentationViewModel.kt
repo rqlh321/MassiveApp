@@ -7,12 +7,12 @@ import javax.inject.Inject
 
 class TextPresentationViewModel @Inject constructor(
     val viewState: StateFlow<TextPresentationViewState>,
-    private val setPreviewTextAction: SetPreviewTextAction,
+    setPreviewTextAction: SetPreviewTextAction,
 ) : CommonViewModel() {
 
     init {
         launch(setPreviewTextAction)
     }
 
-    fun update() = launch(setPreviewTextAction)
+//    fun update() = launch(setPreviewTextAction)
 }

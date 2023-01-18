@@ -1,10 +1,16 @@
 package com.example.color_impl
 
+import androidx.datastore.core.DataStore
 import com.example.color_api.ColorRepo
+import com.example.color_impl.banner.PersonalPreferences
+import kotlinx.coroutines.flow.first
+import java.util.UUID
 import javax.inject.Inject
 import kotlin.random.Random
 
-class ColorRepoImpl @Inject constructor() : ColorRepo {
+class ColorRepoImpl @Inject constructor(
+    private val store: DataStore<PersonalPreferences>
+) : ColorRepo {
 
     private val defaultColor = "#89CFF0"
 
@@ -13,6 +19,7 @@ class ColorRepoImpl @Inject constructor() : ColorRepo {
     override suspend fun color(id: String) = colors[id] ?: defaultColor
 
     override suspend fun change(id: String) = generate().also {
+        store.updateData { PersonalPreferences.newBuilder().setPass("123").build() }
         colors[id] = it
         return it
     }

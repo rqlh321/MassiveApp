@@ -37,12 +37,14 @@ dependencies {
     implementation project(":text-impl")
     implementation project(":color-impl")
     implementation project(":banner-impl")
+    implementation project(":storage")
 
     implementation project(":color-setup-feature")
     implementation project(":text-presentation-feature")
 
     implementation project(":android-core")
 
+    implementation "androidx.datastore:datastore:1.0.0"
     implementation google.dagger
     implementation google.dagger_android_support
     kapt google.dagger_compiler

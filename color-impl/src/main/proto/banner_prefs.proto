@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option java_package = "com.example.color_impl.banner";
+option java_multiple_files = true;
+
+message PersonalPreferences {
+  string name = 1;
+  string pass = 2;
+}

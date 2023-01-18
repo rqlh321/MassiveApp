@@ -32,7 +32,7 @@ class TextPresentationFragment : CommonFragment(R.layout.text_presentation_fragm
         setFragmentResultListener(UPDATE_REQUEST_KEY) { _, bundle ->
             val result = bundle.getString(UPDATE_REQUEST_RESULT_KEY)
             if (result == SUCCESS_UPDATE_RESULT) {
-                viewModel.update()
+//                viewModel.update()
             }
         }
 

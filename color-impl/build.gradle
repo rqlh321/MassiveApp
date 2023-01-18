@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id 'org.jetbrains.kotlin.jvm'
+    id "com.google.protobuf" version "0.8.17"
 }
 
 java {
@@ -9,5 +10,25 @@ java {
 }
 dependencies {
     api project(":color-api")
+
     implementation java_x.inject
+    implementation "androidx.datastore:datastore-core:1.0.0"
+
+    implementation  "com.google.protobuf:protobuf-javalite:3.21.12"
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.14.0"
+    }
+
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java {
+                    option 'lite'
+                }
+            }
+        }
+    }
 }

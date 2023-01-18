@@ -1,8 +1,8 @@
 package com.example.massiveapp.di.module
 
 import androidx.lifecycle.ViewModel
-import com.example.massiveapp.di.scope.FeatureScope
 import com.example.massiveapp.di.ViewModelKey
+import com.example.massiveapp.di.scope.FeatureScope
 import com.example.text_presentation_feature.TextPresentationViewModel
 import com.example.text_presentation_feature.TextPresentationViewState
 import com.example.text_presentation_feature.action.SetPreviewTextAction
@@ -32,7 +32,7 @@ interface PresentationModule {
         @FeatureScope
         @Provides
         fun provideTextPresentationViewState(): MutableStateFlow<TextPresentationViewState> {
-            return MutableStateFlow(TextPresentationViewState("", "#ffffff", emptyList()))
+            return MutableStateFlow(TextPresentationViewState(emptyList()))
         }
 
     }

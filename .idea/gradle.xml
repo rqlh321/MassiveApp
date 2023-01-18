@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/color-api" />
             <option value="$PROJECT_DIR$/color-impl" />
             <option value="$PROJECT_DIR$/color-setup-feature" />
+            <option value="$PROJECT_DIR$/storage" />
             <option value="$PROJECT_DIR$/text-api" />
             <option value="$PROJECT_DIR$/text-impl" />
             <option value="$PROJECT_DIR$/text-presentation-feature" />
