@@ -5,7 +5,9 @@ import com.example.massiveapp.di.ViewModelKey
 import com.example.massiveapp.di.scope.FeatureScope
 import com.example.text_presentation_feature.TextPresentationViewModel
 import com.example.text_presentation_feature.TextPresentationViewState
+import com.example.text_presentation_feature.action.AddBannerAction
 import com.example.text_presentation_feature.action.SetPreviewTextAction
+import com.example.text_presentation_feature.action.impl.AddBannerActionImpl
 import com.example.text_presentation_feature.action.impl.SetPreviewTextActionImpl
 import dagger.Binds
 import dagger.Module
@@ -22,6 +24,9 @@ interface PresentationModule {
 
     @Binds
     fun bindSetPreviewTextAction(impl: SetPreviewTextActionImpl): SetPreviewTextAction
+
+    @Binds
+    fun bindAddBannerAction(impl: AddBannerActionImpl): AddBannerAction
 
     @Binds
     @IntoMap

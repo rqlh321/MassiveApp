@@ -9,6 +9,8 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.android_core.*
 import com.example.color_setup_feature.databinding.ColorSetupFragmentBinding
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 class ColorSetupFragment : CommonFragment2(R.layout.color_setup_fragment) {
@@ -26,14 +28,13 @@ class ColorSetupFragment : CommonFragment2(R.layout.color_setup_fragment) {
             )
         }
 
-        lifecycleScope.launch {
-            viewModel.uiState
-                .flowWithLifecycle(lifecycle)
-                .collect { uiState ->
-                    screenHolder.currentColor
-                        .backgroundTintList = ColorStateList.valueOf(uiState.color)
-                }
-        }
+        viewModel.uiState
+            .flowWithLifecycle(lifecycle)
+            .onEach { uiState ->
+                screenHolder.currentColor
+                    .backgroundTintList = ColorStateList.valueOf(uiState.color)
+            }
+            .launchIn(lifecycleScope)
 
     }
 }

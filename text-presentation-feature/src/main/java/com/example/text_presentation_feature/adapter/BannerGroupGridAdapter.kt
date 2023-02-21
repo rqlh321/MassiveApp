@@ -10,7 +10,7 @@ import com.example.text_presentation_feature.adapter.viewholder.MediumBannerView
 import com.example.text_presentation_feature.databinding.BannerItemMediumBinding
 
 class BannerGroupGridAdapter(
-    private val onBannerClick: (String) -> Unit
+    private val onBannerClick: (Long) -> Unit
 ) : ListAdapter<GroupedBannerItem, GroupedBannerViewHolder>(GroupedDiffCallback()) {
 
 

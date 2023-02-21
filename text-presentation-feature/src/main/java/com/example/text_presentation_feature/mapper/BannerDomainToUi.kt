@@ -1,13 +1,13 @@
 package com.example.text_presentation_feature.mapper
 
-import com.example.banner_api.Banner
+import com.example.banner_api.BannerGroup
 import com.example.text_presentation_feature.GroupItem
 
-class BannerDomainToUi : suspend (List<Banner>) -> List<GroupItem> {
+class BannerDomainToUi : suspend (List<BannerGroup>) -> List<GroupItem> {
 
     private val grouped = GroupedBannerDomainToUi()
 
-    override suspend fun invoke(banners: List<Banner>) = banners.map { input ->
+    override suspend fun invoke(banners: List<BannerGroup>) = banners.map { input ->
         GroupItem(
             id = input.id,
             text = input.text,

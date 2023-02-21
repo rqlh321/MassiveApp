@@ -10,14 +10,14 @@ import com.example.text_presentation_feature.adapter.viewholder.SmallBannerViewH
 import com.example.text_presentation_feature.databinding.BannerItemSmallBinding
 
 class BannerGroupListHorizontalAdapter(
-    private val onBannerClick: (String) -> Unit
+    private val onBannerClick: (Long) -> Unit
 ) : ListAdapter<GroupedBannerItem, GroupedBannerViewHolder>(GroupedDiffCallback()) {
 
     init {
         setHasStableIds(true)
     }
 
-    override fun getItemId(position: Int) = getItem(position).id.hashCode().toLong()
+    override fun getItemId(position: Int) = getItem(position).id
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = SmallBannerViewHolder(
         BannerItemSmallBinding.inflate(

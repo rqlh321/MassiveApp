@@ -8,7 +8,7 @@ import com.example.text_presentation_feature.databinding.BannerGroupGridItemBind
 
 class GroupGridBannerViewHolder(
     binding: BannerGroupGridItemBinding,
-    onBannerClick: (String) -> Unit
+    onBannerClick: (Long) -> Unit
 ) : BannerViewHolder(binding.root) {
 
     private val adapter = BannerGroupGridAdapter(onBannerClick)

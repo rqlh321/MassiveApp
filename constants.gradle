@@ -15,6 +15,10 @@ ext {
             "junit"           : "4.13.2",
             "android_junit"   : "1.1.4",
             "android_espresso": "3.5.0",
+            "recyclerview"    : "1.2.1",
+            "datastore"       : "1.0.0",
+            "coroutines"      : "1.6.4",
+            "protobuf"        : "3.21.12",
     ]
     testing = [
             "junit"           : "junit:junit:$versions.inject",
@@ -24,10 +28,16 @@ ext {
     java_x = [
             "inject": "javax.inject:javax.inject:$versions.inject"
     ]
+    kotlin_libs = [
+            "coroutines_core": "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines"
+    ]
     support = [
-            "appcompat" : "androidx.appcompat:appcompat:$versions.appcompat",
-            "constraint": "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
-            "core"      : "androidx.core:core-ktx:$versions.core",
+            "datastore_core": "androidx.datastore:datastore-core:$versions.datastore",
+            "datastore"     : "androidx.datastore:datastore:$versions.datastore",
+            "recyclerview"  : "androidx.recyclerview:recyclerview:$versions.recyclerview",
+            "appcompat"     : "androidx.appcompat:appcompat:$versions.appcompat",
+            "constraint"    : "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
+            "core"          : "androidx.core:core-ktx:$versions.core",
     ]
     lifecycle = [
             "runtime"  : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle",
@@ -40,6 +50,7 @@ ext {
             "dynamic" : "androidx.navigation:navigation-dynamic-features-fragment:$versions.navigation",
     ]
     google = [
+            "protobuf"              : "com.google.protobuf:protobuf-javalite:$versions.protobuf",
             "material"              : "com.google.android.material:material:$versions.material",
             "dagger_android_support": "com.google.dagger:dagger-android-support:$versions.dagger",
             "dagger"                : "com.google.dagger:dagger:$versions.dagger",

@@ -11,7 +11,8 @@ import com.example.android_core.*
 import com.example.text_presentation_feature.adapter.BannerAdapter
 import com.example.text_presentation_feature.adapter.decoration.PaddingDecoration
 import com.example.text_presentation_feature.databinding.TextPresentationFragmentBinding
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 class TextPresentationFragment : CommonFragment(R.layout.text_presentation_fragment) {
 
@@ -22,6 +23,9 @@ class TextPresentationFragment : CommonFragment(R.layout.text_presentation_fragm
         val screenHolder = TextPresentationFragmentBinding.bind(view)
         val renderer = TextPresentationRenderer(screenHolder)
 
+        screenHolder.button.setOnClickListener {
+            viewModel.addBanner()
+        }
         screenHolder.list.addItemDecoration(PaddingDecoration(view.context))
         screenHolder.list.setHasFixedSize(true)
         screenHolder.list.adapter = BannerAdapter {
@@ -36,11 +40,10 @@ class TextPresentationFragment : CommonFragment(R.layout.text_presentation_fragm
             }
         }
 
-        lifecycleScope.launch {
-            viewModel.viewState
-                .flowWithLifecycle(lifecycle)
-                .collect(renderer::invoke)
-        }
+        viewModel.viewState
+            .flowWithLifecycle(lifecycle)
+            .onEach(renderer)
+            .launchIn(lifecycleScope)
     }
 
 }

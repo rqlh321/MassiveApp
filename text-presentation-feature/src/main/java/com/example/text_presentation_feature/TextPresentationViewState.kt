@@ -5,7 +5,7 @@ data class TextPresentationViewState(
 )
 
 data class GroupItem(
-    val id: String,
+    val id: Long,
     val text: CharSequence,
     val color: String,
     val presentation: Int,
@@ -13,7 +13,7 @@ data class GroupItem(
 )
 
 data class GroupedBannerItem(
-    val id: String,
+    val id: Long,
     val text: CharSequence,
     val color: String,
 )

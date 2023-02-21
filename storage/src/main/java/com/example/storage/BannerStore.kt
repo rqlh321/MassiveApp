@@ -1,9 +1,12 @@
 package com.example.storage
 
-import com.example.storage.data.BannerData
+import com.example.sqldelight.BannerGroupEntity
 import kotlinx.coroutines.flow.Flow
 
 interface BannerStore {
 
-    fun banners(): Flow<List<BannerData>>
+    fun groupsWithDescriptions(): Flow<List<BannerGroupEntity>>
+
+    suspend fun createGroup(text: String, color: String)
+
 }

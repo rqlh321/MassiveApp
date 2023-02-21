@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id 'org.jetbrains.kotlin.jvm'
+    id "app.cash.sqldelight" version "2.0.0-alpha05"
 }
 
 java {
@@ -9,6 +10,12 @@ java {
 }
 dependencies {
     implementation java_x.inject
-
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation kotlin_libs.coroutines_core
+}
+sqldelight {
+    databases {
+        Database {
+            packageName = "com.example.storage"
+        }
+    }
 }

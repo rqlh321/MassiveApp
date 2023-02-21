@@ -1,0 +1,15 @@
+CREATE TABLE BannerDescriptionEntity (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  group_id INTEGER NOT NULL,
+  color TEXT NOT NULL,
+  text TEXT NOT NULL,
+  FOREIGN KEY (group_id) REFERENCES BannerGroupEntity(id) ON DELETE CASCADE
+);
+
+read:
+SELECT *
+FROM BannerDescriptionEntity;
+
+create:
+INSERT INTO BannerDescriptionEntity(id, group_id, color, text)
+VALUES (NULL ,?,?,?);

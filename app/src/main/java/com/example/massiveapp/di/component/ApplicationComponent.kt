@@ -2,10 +2,7 @@ package com.example.massiveapp.di.component
 
 import android.content.Context
 import com.example.massiveapp.ThisApp
-import com.example.massiveapp.di.DataSourceModule
-import com.example.massiveapp.di.RepoModule
-import com.example.massiveapp.di.StoreModule
-import com.example.massiveapp.di.UseCaseModule
+import com.example.massiveapp.di.*
 import com.example.massiveapp.di.module.AppModule
 import com.example.massiveapp.di.scope.AppScope
 import dagger.BindsInstance
@@ -22,6 +19,7 @@ import dagger.android.AndroidInjector
         StoreModule::class,
 
         DataSourceModule::class,
+        MapperModule::class,
         RepoModule::class,
         UseCaseModule::class,
 
@@ -34,6 +32,6 @@ interface ApplicationComponent : AndroidInjector<ThisApp> {
         fun build(): ApplicationComponent
 
         @BindsInstance
-        fun application(context: Context):Builder
+        fun application(context: Context): Builder
     }
 }

@@ -10,4 +10,12 @@ class BannerUseCaseImpl @Inject constructor(
 
     override fun banners() = repo.banners()
 
+    override suspend fun addBanner(
+        text: String,
+        color: String
+    ) = repo.addBanner(
+        text = text,
+        color = color
+    )
+
 }

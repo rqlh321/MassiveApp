@@ -7,7 +7,7 @@ import com.example.text_presentation_feature.databinding.BannerGroupListHorizont
 
 class GroupListBannerViewHolder(
     binding: BannerGroupListHorizontalItemBinding,
-    onBannerClick: (String) -> Unit
+    onBannerClick: (Long) -> Unit
 ) : BannerViewHolder(binding.root) {
 
     private val adapter = BannerGroupListHorizontalAdapter(onBannerClick)

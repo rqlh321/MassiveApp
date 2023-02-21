@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.android_core.click
-import com.example.banner_api.Banner.Companion.PRESENTATION_GRID
-import com.example.banner_api.Banner.Companion.PRESENTATION_LIST
-import com.example.banner_api.Banner.Companion.PRESENTATION_SINGLE
+import com.example.banner_api.BannerGroup.Companion.PRESENTATION_GRID
+import com.example.banner_api.BannerGroup.Companion.PRESENTATION_LIST
+import com.example.banner_api.BannerGroup.Companion.PRESENTATION_SINGLE
 import com.example.text_presentation_feature.GroupItem
 import com.example.text_presentation_feature.adapter.viewholder.BannerViewHolder
 import com.example.text_presentation_feature.adapter.viewholder.BigBannerViewHolder
@@ -17,7 +17,7 @@ import com.example.text_presentation_feature.databinding.BannerGroupListHorizont
 import com.example.text_presentation_feature.databinding.BannerItemBigBinding
 
 class BannerAdapter(
-    private val onBannerClick: (String) -> Unit
+    private val onBannerClick: (Long) -> Unit
 ) : ListAdapter<GroupItem, BannerViewHolder>(DiffCallback()) {
 
     init {

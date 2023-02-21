@@ -4,8 +4,8 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDeepLinkRequest
 
-fun Fragment.deeplinkColorSetup(id: String) = NavDeepLinkRequest.Builder
-    .fromUri(getString(R.string.deeplink_schema_color_setup).replace("{id}", id).toUri())
+fun Fragment.deeplinkColorSetup(id: Long) = NavDeepLinkRequest.Builder
+    .fromUri(getString(R.string.deeplink_schema_color_setup).replace("{id}", id.toString()).toUri())
     .build()
 
 const val UPDATE_REQUEST_KEY = "request_update_key"

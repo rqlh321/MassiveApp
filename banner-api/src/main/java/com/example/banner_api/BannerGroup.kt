@@ -1,11 +1,11 @@
 package com.example.banner_api
 
-data class Banner(
-    val id: String,
+data class BannerGroup(
+    val id: Long,
     val text: CharSequence,
     val color: String,
     val presentation: Int,
-    val list: List<GroupedBanner>,
+    val list: List<BannerDescription>,
 ) {
     companion object {
         const val PRESENTATION_SINGLE = 0

@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id "app.cash.sqldelight" version "2.0.0-alpha05"
 }
 
 android {
@@ -44,9 +45,18 @@ dependencies {
 
     implementation project(":android-core")
 
-    implementation "androidx.datastore:datastore:1.0.0"
+    implementation "app.cash.sqldelight:android-driver:2.0.0-alpha05"
+    implementation support.datastore
+
     implementation google.dagger
     implementation google.dagger_android_support
     kapt google.dagger_compiler
     kapt google.dagger_processor
+}
+sqldelight {
+    databases {
+        create("Database") {
+            packageName.set("com.example.storage")
+        }
+    }
 }
